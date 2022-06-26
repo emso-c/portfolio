@@ -58,6 +58,7 @@ class Game extends React.Component{
             history: [{
                 squares: Array(9).fill(squareNotation.empty),
             }],
+            currentStep: 0,
             isXturn: true
         };
     };
@@ -71,7 +72,7 @@ class Game extends React.Component{
             The following implementation is wrong:
             this.state.squares[i] = 'X'
         */
-        const history = this.state.history;
+        const history = this.state.history.slice(0, this.state.currentStep + 1); // ???
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         if(this.checkWinner(squares)){
@@ -83,9 +84,9 @@ class Game extends React.Component{
                 history: history.concat([{
                     squares: squares
                 }]),
+                currentStep: history.length, // ??
                 isXturn: !this.state.isXturn
             })
-            console.log(this.state.history);
         }
     }
 
@@ -104,9 +105,16 @@ class Game extends React.Component{
         return condition;
     }
 
+    leapBackTo(i){
+        this.setState({
+            currentStep: i,
+            isXturn: (i % 2) === 0, // ??
+        })
+    }
+
     render(){
         const history = this.state.history;
-        const current = history[history.length - 1];
+        const current = history[this.state.currentStep];
         let status = 'Current player: ' + (this.state.isXturn ? squareNotation.x : squareNotation.o);
         const winner = this.checkWinner(current.squares);
         if (winner){
@@ -126,6 +134,15 @@ class Game extends React.Component{
                 <div>
                     History
                     <ol>
+                        {history.map((history, i) => {
+                                return (
+                                    <li>
+                                        <button onClick={()=>this.leapBackTo(i)}>
+                                            Back to move #{i}
+                                        </button>
+                                    </li>
+                                )
+                        })}
                     </ol>
                 </div>
             </div>
