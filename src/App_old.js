@@ -26,71 +26,17 @@ function Square(props){
 }
 
 class Board extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            squares: Array(9).fill(squareNotation.empty),
-            isXturn: true,
-        }
-    }
-
-    checkWinner(){
-        let condition = null;
-        winningLines.map((line, i) =>{
-            const [a,b,c] = line;
-            if (this.state.squares[a] === squareNotation.empty){
-                return null;
-            }
-            if (this.state.squares[a] === this.state.squares[b] && this.state.squares[a] === this.state.squares[c]){
-                condition = this.state.squares[a];
-            }
-            return null;
-        })
-        return condition;
-    }
-
-    handleClick(i){
-        /* 
-            Update squares, shouldn't update the states directly
-            and use setState instead. That's why we should create
-            a shallow copy first by using an empty slice method.
-
-            The following implementation is wrong:
-            this.state.squares[i] = 'X'
-        */
-
-        const squares = this.state.squares.slice()
-        if(this.checkWinner()){
-            return
-        }
-        if(squares[i] === squareNotation.empty){
-            squares[i] = this.state.isXturn ? squareNotation.x  : squareNotation.o;
-            this.setState({
-                squares: squares,
-                isXturn: !this.state.isXturn
-            })
-        }
-    }
-
     renderSquare(i){
         return (
             <Square 
-                value={this.state.squares[i]}
-                onClick={()=>this.handleClick(i)}
+                value={this.props.squares[i]}
+                onClick={()=>this.props.onClick(i)}
             />
         )
     }
     render(){
-        let status = 'Current player: ' + (this.state.isXturn ? squareNotation.x : squareNotation.o);
-        const winner = this.checkWinner();
-        if (winner){
-            status = winner + 'has won!';
-        }
         return (
             <div>
-                <div className="Status">
-                    {status}
-                </div>
                 <div>
                     {this.renderSquare(0)}{this.renderSquare(1)}{this.renderSquare(2)}
                 </div>
@@ -108,17 +54,83 @@ class Board extends React.Component {
 class Game extends React.Component{
     constructor(props){
         super(props);
-        this.setState({
-            history: null
-        });
+        this.state = {
+            history: [{
+                squares: Array(9).fill(squareNotation.empty),
+            }],
+            isXturn: true
+        };
     };
 
-    render(){
-        return (
-            <Board />
-        )
+    handleClick(i){
+        /* 
+            Update squares, shouldn't update the states directly
+            and use setState instead. That's why we should create
+            a shallow copy first by using an empty slice method.
+
+            The following implementation is wrong:
+            this.state.squares[i] = 'X'
+        */
+        const history = this.state.history;
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
+        if(this.checkWinner(squares)){
+            return
+        }
+        if(squares[i] === squareNotation.empty){
+            squares[i] = this.state.isXturn ? squareNotation.x  : squareNotation.o;
+            this.setState({
+                history: history.concat([{
+                    squares: squares
+                }]),
+                isXturn: !this.state.isXturn
+            })
+            console.log(this.state.history);
+        }
     }
 
+    checkWinner(squares){
+        let condition = null;
+        winningLines.map((line, i) =>{
+            const [a,b,c] = line;
+            if (squares[a] === squareNotation.empty){
+                return null;
+            }
+            if (squares[a] === squares[b] && squares[a] === squares[c]){
+                condition = squares[a];
+            }
+            return null;
+        })
+        return condition;
+    }
+
+    render(){
+        const history = this.state.history;
+        const current = history[history.length - 1];
+        let status = 'Current player: ' + (this.state.isXturn ? squareNotation.x : squareNotation.o);
+        const winner = this.checkWinner(current.squares);
+        if (winner){
+            status = winner + 'has won!';
+        }
+        return (
+            <div>
+                <div>
+                    <div>
+                        {status}
+                    </div>
+                    <Board
+                        squares={current.squares}
+                        onClick={(i)=>this.handleClick(i)}
+                    />
+                </div>
+                <div>
+                    History
+                    <ol>
+                    </ol>
+                </div>
+            </div>
+        )
+    }
 }
 
 function App() {
