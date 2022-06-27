@@ -28,6 +28,9 @@ function printRowCol(i){
 
 function checkWinner(squares){
     let condition = null;
+    if (squares.every(element => element !== squareNotation.empty)){
+        return 'draw';
+    }
     winningLines.map((line, i) =>{
         const [a,b,c] = line;
         if (squares[a] === squareNotation.empty){
@@ -99,7 +102,6 @@ class Game extends React.Component{
         */
         const history = this.state.history.slice(0, this.state.currentStep + 1); // ???
         const current = history[history.length - 1];
-        // const locations = current.locations.slice(0, this.state.currentStep + 1);
         const locations = current.locations;
         const squares = current.squares.slice();
         if(checkWinner(squares)){
@@ -133,6 +135,9 @@ class Game extends React.Component{
         const winner = checkWinner(current.squares);
         if (winner){
             status = winner + 'has won!';
+            if (winner === 'draw'){
+                status = 'Draw!'
+            }
         }
         return (
             <div>
