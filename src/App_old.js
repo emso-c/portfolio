@@ -87,6 +87,7 @@ class Game extends React.Component{
                 locations: Array(9).fill(null),
             }],
             currentStep: 0,
+            sortHistoryAsc: false,
             isXturn: true
         };
     };
@@ -128,9 +129,16 @@ class Game extends React.Component{
         })
     }
 
+    reverseHistoryOrder(){
+        this.setState({
+            sortHistoryAsc: !this.state.sortHistoryAsc
+        })
+    }
+
     render(){
         const history = this.state.history;
         const current = history[this.state.currentStep];
+        const isAscending = this.state.sortHistoryAsc;
         let status = 'Current player: ' + (this.state.isXturn ? squareNotation.x : squareNotation.o);
         const winner = checkWinner(current.squares);
         if (winner){
@@ -154,15 +162,20 @@ class Game extends React.Component{
                     History
                     <ol>
                         {history.map((history, i) => {
+                                const index = isAscending ? current.squares.length-(current.squares.length-this.state.currentStep)-i : i;
+
                                 return (
                                     <li>
-                                        <button onClick={()=>this.leapBackTo(i)}>
-                                            Back to move #{i} {printRowCol(current.locations[i])}
+                                        <button onClick={()=>this.leapBackTo(index)}>
+                                            Back to move #{index} {printRowCol(current.locations[index])}
                                         </button>
                                     </li>
                                 )
                         })}
                     </ol>
+                    <div>
+                        <button onClick={()=>this.reverseHistoryOrder()}>{this.state.sortHistoryAsc ? 'ASC' : 'DESC'}</button>
+                    </div>
                 </div>
             </div>
         )
