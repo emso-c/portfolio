@@ -17,6 +17,30 @@ const winningLines = Object.freeze([
     [2,4,6]
 ])
 
+function printRowCol(i){
+    if (i === null){
+        return;
+    }
+    const row = (i % 3) + 1;
+    const col = Math.floor(i / 3) + 1;
+    return '(' + row + ' ' + col + ')';
+}
+
+function checkWinner(squares){
+    let condition = null;
+    winningLines.map((line, i) =>{
+        const [a,b,c] = line;
+        if (squares[a] === squareNotation.empty){
+            return null;
+        }
+        if (squares[a] === squares[b] && squares[a] === squares[c]){
+            condition = squares[a];
+        }
+        return null;
+    })
+    return condition;
+}
+
 function Square(props){
     return (
         <button onClick={()=>props.onClick()}>
@@ -57,6 +81,7 @@ class Game extends React.Component{
         this.state = {
             history: [{
                 squares: Array(9).fill(squareNotation.empty),
+                locations: Array(9).fill(null),
             }],
             currentStep: 0,
             isXturn: true
@@ -74,35 +99,24 @@ class Game extends React.Component{
         */
         const history = this.state.history.slice(0, this.state.currentStep + 1); // ???
         const current = history[history.length - 1];
+        // const locations = current.locations.slice(0, this.state.currentStep + 1);
+        const locations = current.locations;
         const squares = current.squares.slice();
-        if(this.checkWinner(squares)){
+        if(checkWinner(squares)){
             return
         }
         if(squares[i] === squareNotation.empty){
             squares[i] = this.state.isXturn ? squareNotation.x  : squareNotation.o;
+            locations[this.state.currentStep + 1] = i 
             this.setState({
                 history: history.concat([{
-                    squares: squares
+                    squares: squares,
+                    locations: locations
                 }]),
                 currentStep: history.length, // ??
                 isXturn: !this.state.isXturn
             })
         }
-    }
-
-    checkWinner(squares){
-        let condition = null;
-        winningLines.map((line, i) =>{
-            const [a,b,c] = line;
-            if (squares[a] === squareNotation.empty){
-                return null;
-            }
-            if (squares[a] === squares[b] && squares[a] === squares[c]){
-                condition = squares[a];
-            }
-            return null;
-        })
-        return condition;
     }
 
     leapBackTo(i){
@@ -116,7 +130,7 @@ class Game extends React.Component{
         const history = this.state.history;
         const current = history[this.state.currentStep];
         let status = 'Current player: ' + (this.state.isXturn ? squareNotation.x : squareNotation.o);
-        const winner = this.checkWinner(current.squares);
+        const winner = checkWinner(current.squares);
         if (winner){
             status = winner + 'has won!';
         }
@@ -138,7 +152,7 @@ class Game extends React.Component{
                                 return (
                                     <li>
                                         <button onClick={()=>this.leapBackTo(i)}>
-                                            Back to move #{i}
+                                            Back to move #{i} {printRowCol(current.locations[i])}
                                         </button>
                                     </li>
                                 )
