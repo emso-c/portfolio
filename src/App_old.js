@@ -26,24 +26,6 @@ function printRowCol(i){
     return '(' + row + ' ' + col + ')';
 }
 
-function checkWinner(squares){
-    let condition = null;
-    if (squares.every(element => element !== squareNotation.empty)){
-        return 'draw';
-    }
-    winningLines.map((line, i) =>{
-        const [a,b,c] = line;
-        if (squares[a] === squareNotation.empty){
-            return null;
-        }
-        if (squares[a] === squares[b] && squares[a] === squares[c]){
-            condition = squares[a];
-        }
-        return null;
-    })
-    return condition;
-}
-
 function Square(props){
     return (
         <button onClick={()=>props.onClick()}>
@@ -56,6 +38,7 @@ class Board extends React.Component {
     renderSquare(i){
         return (
             <Square 
+                className={this.props.highlights.includes(i) ? "highlightedSquare": "square"}
                 value={this.props.squares[i]}
                 onClick={()=>this.props.onClick(i)}
             />
@@ -86,6 +69,7 @@ class Game extends React.Component{
                 squares: Array(9).fill(squareNotation.empty),
                 locations: Array(9).fill(null),
             }],
+            highlightIndexes: [],
             currentStep: 0,
             sortHistoryAsc: false,
             isXturn: true
@@ -105,7 +89,10 @@ class Game extends React.Component{
         const current = history[history.length - 1];
         const locations = current.locations;
         const squares = current.squares.slice();
-        if(checkWinner(squares)){
+        console.log(this.checkWinner(squares), typeof this.checkWinner(squares));
+        if(this.checkWinner(squares)){
+            console.log("b");
+            this.getWinnerLine(squares);
             return
         }
         if(squares[i] === squareNotation.empty){
@@ -135,12 +122,56 @@ class Game extends React.Component{
         })
     }
 
+    checkWinner(squares){
+        let condition = null;
+        if (squares.every(element => element !== squareNotation.empty)){
+            return 'draw';
+        }
+        
+        winningLines.map((line, i) =>{
+            const [a,b,c] = line;
+            if (squares[a] === squareNotation.empty){
+                return null;
+            }
+            if (squares[a] === squares[b] && squares[a] === squares[c]){
+                condition = squares[a];
+            }
+            return null;
+        })
+        return condition;
+    }
+    getWinnerLine(squares){
+        let winning_line = [];
+        console.log("d");
+        if (squares.every(element => element !== squareNotation.empty)){
+            return null;
+        }
+        winningLines.map((line, i) =>{
+            const [a,b,c] = line;
+            if (squares[a] === squareNotation.empty){
+                return null;
+            }
+            if (squares[a] === squares[b] && squares[a] === squares[c]){
+                winning_line = line;
+            }
+            return null;
+        })
+        if(winning_line){
+            this.setState({
+                highlightIndexes: winning_line
+            });
+            console.log(this.state.highlightIndexes);
+        }
+        return null;
+    }
+
     render(){
         const history = this.state.history;
         const current = history[this.state.currentStep];
         const isAscending = this.state.sortHistoryAsc;
+        const highlights = this.state.highlightIndexes;
         let status = 'Current player: ' + (this.state.isXturn ? squareNotation.x : squareNotation.o);
-        const winner = checkWinner(current.squares);
+        const winner = this.checkWinner(current.squares);
         if (winner){
             status = winner + 'has won!';
             if (winner === 'draw'){
@@ -156,6 +187,7 @@ class Game extends React.Component{
                     <Board
                         squares={current.squares}
                         onClick={(i)=>this.handleClick(i)}
+                        highlights={highlights}
                     />
                 </div>
                 <div>
