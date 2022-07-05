@@ -58,7 +58,6 @@ class App extends React.Component {
                     <Blog lang={this.state.lang}></Blog>
                     <Projects></Projects>
                 </div>
-                asdasdasdsadsasdasdasd
                 <Footer></Footer>
             </>
         )   
