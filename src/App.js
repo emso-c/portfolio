@@ -1,27 +1,9 @@
 import React from 'react';
-import { Button } from '@mui/material';
 import MediumCarousel from './Components/MediumCarousel';
+import Header from './Components/Header';
 import Cookies from 'js-cookie';
 import axios from 'axios'
 
-class Header extends React.Component {
-    render(){
-        return  (
-            <div>
-                <Navbar></Navbar>
-            </div>
-        )
-    }
-}
-class Navbar extends React.Component {
-    render(){
-        return (
-            <div>
-
-            </div>
-        )
-    }
-}
 
 class Body extends React.Component {
     render(){
@@ -89,6 +71,7 @@ class App extends React.Component {
             }
             this.getLangGeoInfo();
         }
+        this.swapLangHandler = this.handleSwapLang.bind(this)
     }
 
     getLangGeoInfo = () => {
@@ -105,7 +88,7 @@ class App extends React.Component {
 
     // right now only supports Turkish and English, so it's only a binary swap
     // TODO: the function has to be rewritten should more languages are supported  
-    swapLang(){
+    handleSwapLang(){
         var newLang = this.state.lang === 'tr' ? 'en' : 'tr'
         this.setState({
             lang: newLang
@@ -116,11 +99,9 @@ class App extends React.Component {
     render(){
         return (
             <>
-            <br></br>
-                <Header></Header>
+                <Header lang={this.state.lang} swapLangHandler={this.swapLangHandler}></Header>
                 <Body></Body>
                 <MediumCarousel lang={this.state.lang}></MediumCarousel>
-                <Button variant="outlined" onClick={()=>{this.swapLang()}}>Outlined</Button>
                 <Footer></Footer>
             </>
         )   

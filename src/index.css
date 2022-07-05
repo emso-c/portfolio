@@ -1,3 +1,5 @@
 body{
-    min-width: 1200px;
+    min-width: 800px;
+    background: linear-gradient(90deg, rgba(170,170,170,1) 0%, rgba(235,235,235,1) 63%);
+    margin: 0
 }
