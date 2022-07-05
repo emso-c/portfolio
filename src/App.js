@@ -1,58 +1,11 @@
 import React from 'react';
-import MediumCarousel from './Components/MediumCarousel';
 import Header from './Components/Header';
+import Blog from './Components/Blog';
+import Profile from './Components/Profile';
+import Projects from './Components/Projects';
+import Footer from './Components/Footer';
 import Cookies from 'js-cookie';
 import axios from 'axios'
-
-
-class Body extends React.Component {
-    render(){
-        return (
-            <div>
-                <Home></Home>
-                <Blog></Blog>
-                <Projects></Projects>
-            </div>
-        )
-    }
-}
-
-class Home extends React.Component {
-    render(){
-        return (
-            <div>
-            </div>
-        )
-    }
-}
-class Blog extends React.Component {
-    render(){
-        return (
-            <div>
-
-            </div>
-        )
-    }
-}
-class Projects extends React.Component {
-    render(){
-        return (
-            <div>
-            </div>
-        )
-    }
-}
-
-class Footer extends React.Component {
-    render(){
-        return (
-            <div>
-
-            </div>
-        )
-    }
-}
-
 
 
 class App extends React.Component {
@@ -100,8 +53,12 @@ class App extends React.Component {
         return (
             <>
                 <Header lang={this.state.lang} swapLangHandler={this.swapLangHandler}></Header>
-                <Body></Body>
-                <MediumCarousel lang={this.state.lang}></MediumCarousel>
+                <div>
+                    <Profile></Profile>
+                    <Blog lang={this.state.lang}></Blog>
+                    <Projects></Projects>
+                </div>
+                asdasdasdsadsasdasdasd
                 <Footer></Footer>
             </>
         )   
