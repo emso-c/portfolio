@@ -19,6 +19,10 @@ export const texts = {
             contact:{
                 TR: 'İLETİŞİM',
                 EN: 'CONTACT',
+            },
+            support:{
+                TR: 'DESTEK',
+                EN: 'SUPPORT',
             }
         }
     },
