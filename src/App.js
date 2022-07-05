@@ -97,7 +97,6 @@ class App extends React.Component {
                 <Header></Header>
                 <Body></Body>
                 <MediumCarousel lang={this.state.lang}></MediumCarousel>
-                <Button variant="outlined" onClick={()=>{this.swapLang()}}>Outlined</Button>
                 <Footer></Footer>
             </>
         )   
