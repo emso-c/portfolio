@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import MediumCarousel from './Components/MediumCarousel';
 import Cookies from 'js-cookie';
+import axios from 'axios'
 
 class Header extends React.Component {
     render(){
@@ -75,11 +76,32 @@ class Footer extends React.Component {
 class App extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            lang: (Cookies.get('lang') || 'en')
+        var lang = 'en';
+        if(Cookies.get('lang')){
+            lang = Cookies.get('lang');
+            this.state = {
+                lang: lang,
+            }
         }
-        console.log('construct', this.state.lang, Cookies.get('lang'));
+        else{
+            this.state = {
+                lang: 'en',
+            }
+            this.getLangGeoInfo();
+        }
     }
+
+    getLangGeoInfo = () => {
+        axios.get('https://ipapi.co/json/').then((response) => {
+            console.log("lang:", (response.data.country_calling_code === '+90') ? 'tr' : 'en')
+            this.setState({
+                lang: (response.data.country_calling_code === '+90') ? 'tr' : 'en'
+            })
+        }).catch((error) => {
+            console.error(error);
+            return 'en'
+        });
+    };
 
     // right now only supports Turkish and English, so it's only a binary swap
     // TODO: the function has to be rewritten should more languages are supported  
