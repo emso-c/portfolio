@@ -94,7 +94,6 @@ class App extends React.Component {
     render(){
         return (
             <>
-            <br></br>
                 <Header></Header>
                 <Body></Body>
                 <MediumCarousel lang={this.state.lang}></MediumCarousel>
