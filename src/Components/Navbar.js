@@ -32,17 +32,6 @@ function MenuButton(props){
 }
 
 class Navbar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            lang: props.lang
-        }
-        this.swapLangHandler = props.swapLangHandler;
-    }
-    componentWillReceiveProps(props){
-        this.setState({lang: props.lang})
-    }
-
     render(){
         return (
             <Grid
@@ -60,19 +49,19 @@ class Navbar extends React.Component {
                 style = {{minWidth: 700, paddingInline:30, background:''}}
                 >
                     <MenuButton onClick={()=>{window.location.reload(false);}}>
-                        {getText(texts.header.navbar.profile, this.state.lang)}
+                        {getText(texts.header.navbar.profile, this.props.lang)}
                     </MenuButton>
                     <MenuButton>
-                        {getText(texts.header.navbar.projects, this.state.lang)}
+                        {getText(texts.header.navbar.projects, this.props.lang)}
                     </MenuButton>
                     <MenuButton>
-                        {getText(texts.header.navbar.blog, this.state.lang)}
+                        {getText(texts.header.navbar.blog, this.props.lang)}
                     </MenuButton>
                     <MenuButton>
-                        {getText(texts.header.navbar.contact, this.state.lang)}
+                        {getText(texts.header.navbar.contact, this.props.lang)}
                     </MenuButton>
                     <MenuButton>
-                        {getText(texts.header.navbar.support, this.state.lang)}
+                        {getText(texts.header.navbar.support, this.props.lang)}
                     </MenuButton>
                 </Grid>
                 <Grid container xs></Grid>
@@ -85,7 +74,7 @@ class Navbar extends React.Component {
                     <IconButton
                     size="large"
                     color="inherit"
-                    onClick={()=>{this.swapLangHandler()}}
+                    onClick={()=>{this.props.swapLangHandler()}}
                     >
                         <LanguageIcon style={{fontSize:30}} />
                     </IconButton>

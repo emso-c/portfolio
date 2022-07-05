@@ -9,11 +9,7 @@ class MediumCarousel extends React.Component {
         super(props);
         this.state = {
             items: [],
-            lang: props.lang
         }
-    }
-    componentWillReceiveProps(props){
-        this.setState({lang: props.lang})
     }
     componentDidMount(){
         this.fetchMediumFeed()
@@ -55,7 +51,7 @@ class MediumCarousel extends React.Component {
             >
                 {
                     items.slice(0, 3).map((_, i) => {
-                        return <MArticleCardGroup lang={this.state.lang} key={i} keyStart={i} items={[items[i], items[i+3], items[i+6]]}></MArticleCardGroup>
+                        return <MArticleCardGroup lang={this.props.lang} key={i} keyStart={i} items={[items[i], items[i+3], items[i+6]]}></MArticleCardGroup>
                     })
                 }
             </Carousel>
