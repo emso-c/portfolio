@@ -43,7 +43,6 @@ class Navbar extends React.Component {
             >
                 <Grid 
                 container
-                position="fixed"
                 xs={7}
                 justifyContent="space-between"
                 style = {{minWidth: 700, paddingInline:30, background:''}}
