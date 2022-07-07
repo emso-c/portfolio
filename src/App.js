@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from './Components/Header';
-import Blog from './Components/Blog';
-import Profile from './Components/Profile';
-import Projects from './Components/Projects';
+import Body from './Components/Body';
 import Footer from './Components/Footer';
 import Cookies from 'js-cookie';
 import axios from 'axios'
@@ -53,15 +51,12 @@ class App extends React.Component {
         return (
             <>
                 <Header lang={this.state.lang} swapLangHandler={this.swapLangHandler}></Header>
-                <div>
-                    <Profile></Profile>
-                    <Blog lang={this.state.lang}></Blog>
-                    <Projects></Projects>
-                </div>
+                <Body lang={this.state.lang}></Body>
                 <Footer></Footer>
             </>
         )   
     }
 }
+
 
 export default App;
