@@ -44,10 +44,11 @@ class MediumCarousel extends React.Component {
             sx= {{
                 width: 1000,
             }}
-            height={320}
+            height={400}
             animation={'slide'}
             interval={6000}
             duration={700}
+            navButtonsAlwaysVisible={true}
             >
                 {
                     items.slice(0, 3).map((_, i) => {
@@ -81,11 +82,11 @@ function MArticleCardGroup(props){
 
 function MArticleCard(props){
     return (
-        <Card sx={{ width: 300}}>
+        <Card sx={{ width: 290}}>
             <CardActionArea onClick={()=>{window.open(props.item.link, '_blank');}}>
                 <CardMedia
                     component="img"
-                    height="140"
+                    height="150"
                     image={props.item.thumbnail}
                     alt="thumbnail"
                 />
@@ -103,7 +104,7 @@ function MArticleCard(props){
                             {props.item.pubDate.split(" ")[0]}
                         </Typography>
                     </Grid>
-                    <Typography sx={{paddingTop: 1, height: 75, overflow: 'hidden'}} variant="h6" gutterBottom component="div">
+                    <Typography sx={{paddingTop: 0.5, height: 120, overflow: 'hidden'}} variant="h6" gutterBottom component="div">
                         <div>
                             {props.item.title}
                         </div>
