@@ -1,5 +1,71 @@
 body{
-    min-width: 800px;
+    min-width: 1200px;
     background: linear-gradient(90deg, rgba(170,170,170,1) 0%, rgba(235,235,235,1) 63%);
     margin: 0
 }
+
+
+.container {
+    bottom: 90px;
+    left: 50px;
+    padding: 50px 0px;
+    margin: 0 auto;
+    width: 250px;
+    height: 200px;
+    position: relative;
+    perspective: 600px;
+}
+  
+.carousel {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+  
+.item {
+    display: flex;
+    position: absolute;
+    background: rgb(212, 212, 212);
+    width: 180px;
+    height: 250px;
+    line-height: 100px;
+    font-size: 1.5em;
+    text-align: center;
+    opacity: 0.95;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.item img{
+    width: 140px;
+    height: 120px;
+}
+  
+.a {
+    transform: rotateY(0deg) translateZ(250px);
+}
+.b {
+    transform: rotateY(45deg) translateZ(250px);
+}
+.c {
+    transform: rotateY(90deg) translateZ(250px);
+}
+.d {
+    transform: rotateY(135deg) translateZ(250px);
+}
+.e {
+    transform: rotateY(180deg) translateZ(250px);
+} 
+.f {
+    transform: rotateY(225deg) translateZ(250px);
+}
+.g {
+    transform: rotateY(270deg) translateZ(250px);
+}
+.h {
+    transform: rotateY(315deg) translateZ(250px);
+}
+
