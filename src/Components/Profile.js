@@ -2,9 +2,7 @@ import React from 'react';
 import { 
     Box,
     Stack,
-    Card,
     Typography,
-    Divider
 }from '@mui/material';
 import photo from "../Images/emirs.png";
 import {texts, getText} from '../globals';
@@ -80,16 +78,21 @@ class Profile extends React.Component {
                             </HTMLTagText>
                         </Stack>
                     </Box>
-                    <img
-                    style={{
-                        height: '100%',
-                        opacity: 0.7,
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        filter: "drop-shadow(0px 0px 15px rgba(255, 255, 255, .7))",
-                    }}
-                    src={photo} alt="emir"
-                    />
+                    <Box>
+                        <img
+                        style={{
+                            position: 'relative',
+                            opacity: 0.7,
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            filter: "drop-shadow(0px 0px 15px rgba(255, 255, 255, .7))",
+                            zIndex: 1,
+                        }}
+                        src={photo} alt="emir"
+                        />
+                        <div className="fade">
+                        </div>
+                    </Box>
                 </Stack>
                 <Typography style={{paddingTop: 50, filter: "drop-shadow(0px 0px 10px rgba(255, 255, 255, .6))"}} variant="h2" color="white">
                     {getText(texts.body.profile.technologies, this.props.lang)}
@@ -174,7 +177,7 @@ function RotatingCarouselCard(props){
     return (
         <Stack className={"item "+props.class}>
             <div>{props.name}</div>
-            <img src={props.src}></img>
+            <img alt={props.name} src={props.src}></img>
         </Stack>
     )
 }
