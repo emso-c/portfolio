@@ -1,6 +1,7 @@
 //const MediumFeedJSONURL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@emirsoyalan79'
 export const mediumFeedJSONURL = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@asis.garcia'
 
+//const exp_year = new Date().getFullYear() - 2015
 export const texts = {
     header: {
         navbar: {
@@ -31,6 +32,20 @@ export const texts = {
             readMore: {
                 TR: 'OKUMAYA DEVAM ET',
                 EN: 'READ MORE'
+            }
+        },
+        profile: {
+            occupation: {
+                TR: 'Yazılım Mühendisi',
+                EN: 'Software Engineer'
+            },
+            interests: {
+                TR: '#webgeliştirme #veribilimi #yapayzeka',
+                EN: '#webdevelopment #datascience #ai'
+            },
+            technologies: {
+                TR: 'Teknolojiler',
+                EN: 'Technologies'
             }
         }
     },
