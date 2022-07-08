@@ -39,7 +39,7 @@ class Navbar extends React.Component {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            style={{height:100, background: "linear-gradient(90deg, rgba(2,0,36,1) 11%, rgba(32,54,128,1) 68%, rgba(130,156,208,1) 100%)"}}
+            style={{height:100, background: "rgba(10,10,10, .9)", boxShadow: "0px 20px -1px 1px rgba(0,0,0,0.9) inset"}}
             >
                 <Grid 
                 container
@@ -68,7 +68,7 @@ class Navbar extends React.Component {
                 container
                 xs={1}
                 justifyContent="space-between"
-                style = {{paddingInline:40, color:'white', fontSize: 26, background:''}}
+                style = {{paddingInline:40, color:'white', fontSize: 26,}}
                 >
                     <IconButton
                     size="large"
@@ -77,7 +77,7 @@ class Navbar extends React.Component {
                     >
                         <LanguageIcon style={{fontSize:30}} />
                     </IconButton>
-                    </Grid>
+                </Grid>
             </Grid>
             );
         }
