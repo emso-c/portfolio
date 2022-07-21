@@ -42,7 +42,9 @@ class MediumCarousel extends React.Component {
         return (
             <Carousel
             sx= {{
-                width: 1000,
+                width: '75%',
+                margin: 'auto',
+                paddingY: '70px',
             }}
             height={400}
             animation={'slide'}
