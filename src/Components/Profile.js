@@ -51,7 +51,6 @@ class Profile extends React.Component {
                 justifyContent="space-around"
                 alignItems="stretch"
                 spacing={2}
-                midWidth="1000"
                 sx={{margin: 0, paddingX: '50px', height: '80vh'}}>
                     <Box
                         display="flex"
@@ -97,6 +96,7 @@ class Profile extends React.Component {
                 <Typography style={{paddingTop: 50, filter: "drop-shadow(0px 0px 10px rgba(255, 255, 255, .6))"}} variant="h2" color="white">
                     {getText(texts.body.profile.technologies, this.props.lang)}
                 </Typography>
+                <br></br><br></br>
                 <RotatingCarousel></RotatingCarousel>
             </Stack>
         )
