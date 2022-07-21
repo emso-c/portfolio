@@ -84,7 +84,13 @@ function MArticleCardGroup(props){
 
 function MArticleCard(props){
     return (
-        <Card sx={{ width: 290}}>
+        <Card sx={{
+            color: 'rgba(232, 230, 227, 0.87)',
+            boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
+            backgroundImage: 'initial',
+            backgroundColor: 'rgb(24, 26, 27)',
+            width: 290
+        }}>
             <CardActionArea onClick={()=>{window.open(props.item.link, '_blank');}}>
                 <CardMedia
                     component="img"
@@ -99,10 +105,10 @@ function MArticleCard(props){
                         justifyContent="space-between"
                         alignItems="center"
                     >
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography sx={{color: 'rgba(232, 230, 227, 0.87)'}} variant="body2" color="text.secondary">
                             {props.item.author}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography sx={{color: 'rgba(232, 230, 227, 0.87)'}} variant="body2" color="text.secondary">
                             {props.item.pubDate.split(" ")[0]}
                         </Typography>
                     </Grid>
