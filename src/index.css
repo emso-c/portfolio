@@ -86,3 +86,13 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+
+.fadeIn{
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+.fadeOut{
+    opacity: 0;
+    transition: opacity 0.5;
+}

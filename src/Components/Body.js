@@ -2,6 +2,7 @@ import React from 'react';
 import Blog from './Blog';
 import Profile from './Profile';
 import Projects from './Projects';
+import Contact from './Contact';
 import {
     Container,
     Box,
@@ -18,6 +19,8 @@ class Body extends React.Component {
                         <Profile lang={this.props.lang}></Profile>
                         <Projects lang={this.props.lang}></Projects>
                         <Blog lang={this.props.lang}></Blog>
+                        <Contact lang={this.props.lang}></Contact>
+                        <br></br>
                     </Stack>
                 </Box>
             </Container>

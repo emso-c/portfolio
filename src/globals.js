@@ -91,6 +91,16 @@ export const texts = {
                     },  
                 }
             ]
+        },
+        contact: {
+            title: {
+                TR: 'İletişim',
+                EN: 'Contact',
+            },
+            email: 'emirsoyalan79@gmail.com',
+            phone: '+90 538 305 94 79',
+            address: 'Istanbul / Türkiye',
+            github: 'github.com/emso-c',
         }
     },
     footer: {}
