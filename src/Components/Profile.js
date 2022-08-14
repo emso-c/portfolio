@@ -51,7 +51,7 @@ class Profile extends React.Component {
                 justifyContent="space-around"
                 alignItems="stretch"
                 spacing={2}
-                sx={{margin: 0, paddingX: '50px', height: '80vh'}}>
+                sx={{margin: 0, paddingX: '50px', paddingTop: '50px', height: '80vh'}}>
                     <Box
                         display="flex"
                         justifyContent="center"

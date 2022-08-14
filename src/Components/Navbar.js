@@ -39,13 +39,15 @@ class Navbar extends React.Component {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            style={{height:100, background: "rgba(10,10,10, .9)", boxShadow: "0px 20px -1px 1px rgba(0,0,0,0.9) inset"}}
+            height='80px'
+            zIndex={999}
+            style={{position: 'fixed', background: "rgba(10,10,10, .95)", boxShadow: "0px 20px -1px 1px rgba(0,0,0,0.9) inset"}}
             >
                 <Grid 
                 container
                 xs={7}
                 justifyContent="space-between"
-                style = {{minWidth: 700, paddingInline:30, background:''}}
+                style = {{minWidth: 700, paddingInline:30}}
                 >
                     <MenuButton onClick={()=>{window.location.reload(false);}}>
                         {getText(texts.header.navbar.profile, this.props.lang)}
