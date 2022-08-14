@@ -90,7 +90,7 @@ class Contact extends React.Component {
                 </Stack>
                 <Typography
                 style={{margin:"auto", paddingTop: 50, filter: "drop-shadow(0px 0px 10px rgba(255, 255, 255, .6))"}}
-                variant="h3"
+                variant="h4"
                 color="white"
                 className={this.state.isHovering?'fadeIn':'fadeOut'}
                 >
