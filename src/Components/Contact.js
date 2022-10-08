@@ -32,7 +32,12 @@ class Contact extends React.Component {
                     <Link
                     underline="none"
                     to='javascript:void(0)'
-                    href={`mailto:${texts.body.contact.email}`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(texts.body.contact.email).then(() => {
+                            window.open(`mailto:${texts.body.contact.email}`, '_blank');
+                        });
+                    }}
                     onMouseEnter={(e) => this.handleMouseHover(e, texts.body.contact.email)}
                     onMouseLeave={(e) => this.handleMouseHover(e, '​')}
                     >
@@ -46,7 +51,12 @@ class Contact extends React.Component {
                     <Link
                     underline="none"
                     to='javascript:void(0)'
-                    href={`tel:${texts.body.contact.phone}`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(texts.body.contact.phone).then(() => {
+                            window.open(`tel:${texts.body.contact.phone}`, '_blank');
+                        });
+                    }}
                     onMouseEnter={(e) => this.handleMouseHover(e, texts.body.contact.phone)}
                     onMouseLeave={(e) => this.handleMouseHover(e, '​')}
                     >
@@ -61,7 +71,12 @@ class Contact extends React.Component {
                     underline="none"
                     to='javascript:void(0)'
                     target="_blank"
-                    href='https://www.google.com/maps/place/%C4%B0stanbul/'
+                    onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(texts.body.contact.location).then(() => {
+                            window.open('https://www.google.com/maps/place/%C4%B0stanbul/', '_blank');
+                        });
+                    }}
                     onMouseEnter={(e) => this.handleMouseHover(e, texts.body.contact.address)}
                     onMouseLeave={(e) => this.handleMouseHover(e, '​')}
                     >
@@ -76,7 +91,12 @@ class Contact extends React.Component {
                     underline="none"
                     to='javascript:void(0)'
                     target="_blank"
-                    href='https://github.com/emso-c'
+                    onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(texts.body.contact.github).then(() => {
+                            window.open('https://github.com/emso-c', '_blank');
+                        });
+                    }}
                     onMouseEnter={(e) => this.handleMouseHover(e, texts.body.contact.github)}
                     onMouseLeave={(e) => this.handleMouseHover(e, '​')}
                     >
