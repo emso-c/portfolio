@@ -150,14 +150,14 @@ function RotatingCarousel(props){
                     src="https://i0.wp.com/www.primefaces.org/wp-content/uploads/2017/09/feature-react.png?ssl=1" 
                 />
                 <RotatingCarouselCard
-                    name="Numpy"
+                    name="MySQL"
                     class="e"
-                    src="https://user-images.githubusercontent.com/67586773/105040771-43887300-5a88-11eb-9f01-bee100b9ef22.png" 
+                    src="https://1000logos.net/wp-content/uploads/2020/08/MySQL-Logo.png" 
                 />
                 <RotatingCarouselCard
-                    name="Keras"
+                    name="PHP"
                     class="f"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/1200px-Keras_logo.svg.png" 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Webysther_20160423_-_Elephpant.svg/2560px-Webysther_20160423_-_Elephpant.svg.png" 
                 />
                 <RotatingCarouselCard
                     name="MongoDB"
