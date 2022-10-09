@@ -10,15 +10,7 @@ import {texts, getText} from '../globals.js';
 import { Link, animateScroll as scroll } from "react-scroll";
 
 function MenuButton(props){
-    var style = {color:'white', fontSize: 25}
-    var button = (
-        <Button>
-            <Typography style={style} variant="body2" color="text.secondary">
-                {props.children}
-            </Typography>
-        </Button>
-    )
-    var linkedButton = (
+    return <>
         <Link 
         to={props.to?props.to:''}
         smooth
@@ -26,21 +18,18 @@ function MenuButton(props){
         duration={700}
         delay={100}
         >
-            {button}
-        </Link>
-    )
-    if (props.onClick){
-        button = (
-            <Button
-            onClick={()=>{props.onClick()}}
-            >
-                <Typography style={style} variant="body2" color="text.secondary">
+            <Button 
+            onClick={()=>{
+            if(props.onClick)
+                props.onClick();
+            return
+            }}>
+                <Typography style={{color:'white', fontSize: 25}} variant="body2" color="text.secondary">
                     {props.children}
                 </Typography>
             </Button>
-        )
-    }
-    return linkedButton
+        </Link>
+    </>
 }
 
 class Navbar extends React.Component {
