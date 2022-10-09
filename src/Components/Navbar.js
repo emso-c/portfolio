@@ -7,6 +7,7 @@ import {
 }from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 import {texts, getText} from '../globals.js';
+import { Link, animateScroll as scroll } from "react-scroll";
 
 function MenuButton(props){
     var style = {color:'white', fontSize: 25}
@@ -16,6 +17,17 @@ function MenuButton(props){
                 {props.children}
             </Typography>
         </Button>
+    )
+    var linkedButton = (
+        <Link 
+        to={props.to?props.to:''}
+        smooth
+        offset={-70}
+        duration={700}
+        delay={100}
+        >
+            {button}
+        </Link>
     )
     if (props.onClick){
         button = (
@@ -28,7 +40,7 @@ function MenuButton(props){
             </Button>
         )
     }
-    return button
+    return linkedButton
 }
 
 class Navbar extends React.Component {
@@ -49,19 +61,19 @@ class Navbar extends React.Component {
                 justifyContent="space-between"
                 style = {{minWidth: 700, paddingInline:30}}
                 >
-                    <MenuButton onClick={()=>{window.location.reload(false);}}>
+                    <MenuButton to="profile" /* onClick={()=>{window.location.reload(false);}} */>
                         {getText(texts.header.navbar.profile, this.props.lang)}
                     </MenuButton>
-                    <MenuButton>
+                    <MenuButton to="projects">
                         {getText(texts.header.navbar.projects, this.props.lang)}
                     </MenuButton>
-                    <MenuButton>
+                    <MenuButton to="blog">
                         {getText(texts.header.navbar.blog, this.props.lang)}
                     </MenuButton>
-                    <MenuButton>
+                    <MenuButton to="contact">
                         {getText(texts.header.navbar.contact, this.props.lang)}
                     </MenuButton>
-                    <MenuButton>
+                    <MenuButton to="support">
                         {getText(texts.header.navbar.support, this.props.lang)}
                     </MenuButton>
                 </Grid>

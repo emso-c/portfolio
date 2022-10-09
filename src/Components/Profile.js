@@ -41,6 +41,7 @@ class Profile extends React.Component {
     render(){
         return (
             <Stack
+            name="profile"
             direction= 'column'
             justifyContent="center"
             alignItems="center"
