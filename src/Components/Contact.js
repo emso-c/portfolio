@@ -116,6 +116,14 @@ class Contact extends React.Component {
                 >
                     {this.state.textToShow}
                 </Typography>
+                <Typography
+                style={{fontSize: "15px", margin:"auto", filter: "drop-shadow(0px 0px 10px rgba(255, 255, 255, .8))"}}
+                variant="h6"
+                color="#7d7d7d"
+                className={this.state.isHovering?'fadeIn':'fadeOut'}
+                >
+                    {getText(texts.body.contact.copy, this.props.lang)}
+                </Typography>
             </Stack>
         )
     }

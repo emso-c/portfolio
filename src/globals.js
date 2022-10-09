@@ -96,6 +96,10 @@ export const texts = {
                 TR: 'İletişim',
                 EN: 'Contact',
             },
+            copy: {
+                TR: '(kopyalamak için tıklayın)',
+                EN: '(click to copy)',
+            },
             email: 'emirsoyalan79@gmail.com',
             phone: '+90 538 305 94 79',
             address: 'Istanbul / Türkiye',
