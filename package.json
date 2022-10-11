@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://emso.github.io/portfolio",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -13,6 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
+    "gh-pages": "^4.0.0",
     "jquery": "^3.6.0",
     "js-cookie": "^3.0.1",
     "react": "^18.2.0",
@@ -26,6 +28,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
