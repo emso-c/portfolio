@@ -3,7 +3,6 @@ import Blog from './Blog';
 import Profile from './Profile';
 import Projects from './Projects';
 import Contact from './Contact';
-import Donate from './Donate';
 import {
     Container,
     Box,
@@ -29,9 +28,6 @@ class Body extends React.Component {
                         <AnimationOnScroll initiallyVisible={false} animateIn="animate__fadeIn" duration={2} animateOnce>
                             <Contact lang={this.props.lang}></Contact>
                         </AnimationOnScroll>
-                        {/* TODO <Donate lang={this.props.lang}></Donate> */}
-                        <br></br>
-                        <br></br>
                     </Stack>
                 </Box>
             </Container>

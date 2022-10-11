@@ -47,7 +47,7 @@ class Navbar extends React.Component {
                 <Grid 
                 container
                 xs={7}
-                justifyContent="space-between"
+                justifyContent="space-around"
                 style = {{minWidth: 700, paddingInline:30}}
                 >
                     <MenuButton to="profile" /* onClick={()=>{window.location.reload(false);}} */>
@@ -61,9 +61,6 @@ class Navbar extends React.Component {
                     </MenuButton>
                     <MenuButton to="contact">
                         {getText(texts.header.navbar.contact, this.props.lang)}
-                    </MenuButton>
-                    <MenuButton to="support">
-                        {getText(texts.header.navbar.support, this.props.lang)}
                     </MenuButton>
                 </Grid>
                 <Grid container xs></Grid>
