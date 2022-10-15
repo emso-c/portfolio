@@ -104,6 +104,7 @@ export const texts = {
             phone: '+90 538 305 94 79',
             address: 'Istanbul / Türkiye',
             github: 'github.com/emso-c',
+            linkedin: 'linkedin.com/in/emso',
         }
     },
     footer: {}

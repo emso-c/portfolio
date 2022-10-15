@@ -5,6 +5,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 
 class Contact extends React.Component {
@@ -105,6 +106,25 @@ class Contact extends React.Component {
                         color="inherit"
                         >
                             <GitHubIcon style={{color:'white', fontSize:80}} />
+                        </IconButton>
+                    </Link>
+                    <Link
+                    underline="none"
+                    to='javascript:void(0)'
+                    onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(texts.body.contact.linkedin).then(() => {
+                            window.open("https://linkedin.com/in/emso", '_blank');
+                        });
+                    }}
+                    onMouseEnter={(e) => this.handleMouseHover(e, texts.body.contact.linkedin)}
+                    onMouseLeave={(e) => this.handleMouseHover(e, '​')}
+                    >
+                        <IconButton
+                        size="large"
+                        color="inherit"
+                        >
+                            <LinkedInIcon style={{color:'white', fontSize:80}} />
                         </IconButton>
                     </Link>
                 </Stack>
